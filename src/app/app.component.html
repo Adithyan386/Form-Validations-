@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Vaildation</title>
+</head>
+<body>
+  <h2 class="login">LOGIN <span id="spa">FORM</span></h2>
+ <div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Enter username"
+      class="mt-2 round"
+    />
+  </div>
+  <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+    Username is required!
+  </div>
+  
+  <div>
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+      class="mt-2 round"
+    />
+  </div>
+  <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+    Password is required!
+  </div>
+  
+  <button type="submit">Login</button>
+  </form>
+  
+ </div>
+<div id="error-message" class="btn">{{ errorMessage }}</div>
+</body>
+</html>
